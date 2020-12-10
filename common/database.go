@@ -2,19 +2,20 @@ package common
 
 import (
 	"ginessential/model"
-	"gorm.io/gorm"
+	"github.com/spf13/viper"
 	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 )
 
 var DB *gorm.DB
 
 func InitDB() *gorm.DB  {
-	host := "localhost"
-	port := "3306"
-	database := "ginessential"
-	username := "root"
-	password := "hxy116991"
-	charset := "utf8"
+	host := viper.GetString("datasource.host")
+	port := viper.GetString("datasource.port")
+	database := viper.GetString("datasource.database")
+	username := viper.GetString("datasource.username")
+	password := viper.GetString("datasource.password")
+	charset := viper.GetString("datasource.charset")
 
 	//dsn := "root:hxy116991@tcp(127.0.0.1:3306)/ginessential?charset=utf8&parseTime=True&loc=Local"
 	dsn := username+":"+password+"@tcp("+host+":"+port+")/"+database+"?charset="+charset+"&parseTime=True&loc=Local"
