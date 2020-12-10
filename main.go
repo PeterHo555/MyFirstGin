@@ -10,7 +10,6 @@ import (
 func main()  {
 	db := common.InitDB()
 	fmt.Println(db)
-
 	r := gin.Default()
 	r = CollectRoute(r)
 	//r.POST("/api/auth/register", controller.Register)
